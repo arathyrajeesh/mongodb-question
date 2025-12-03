@@ -558,3 +558,16 @@ ShopDB> db.Products.find().sort({price:-1}).limit(1)
   }
 ]
 ShopDB> 
+
+
+
+#Count the number of customers city-wise.
+
+#Count orders grouped by status (Delivered, Pending, Cancelled).
+ShopDB> db.Orders.aggregate([{ $group: { _id: "$status",count: { $sum: 1 }}}])
+[
+  { _id: 'Delivered', count: 2 },
+  { _id: 'Pending', count: 2 },
+  { _id: 'Cancelled', count: 1 }
+]
+ShopDB> 
