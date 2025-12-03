@@ -668,3 +668,101 @@ ShopDB> db.Customers.find()
 ]
 ShopDB> 
 
+
+
+#Delete all cancelled orders from the Orders collection.
+ShopDB> db.Orders.find()
+[
+  {
+    _id: ObjectId('692fbd513b37ae272489b060'),
+    order_id: 1,
+    customer_id: 1,
+    product_id: 101,
+    order_date: '2025-01-10',
+    quantity: 1,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('692fbd513b37ae272489b061'),
+    order_id: 2,
+    customer_id: 2,
+    product_id: 102,
+    order_date: '2025-01-12',
+    quantity: 1,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('692fbd513b37ae272489b062'),
+    order_id: 3,
+    customer_id: 3,
+    product_id: 103,
+    order_date: '2025-01-15',
+    quantity: 2,
+    status: 'Cancelled'
+  },
+  {
+    _id: ObjectId('692fbd513b37ae272489b063'),
+    order_id: 4,
+    customer_id: 4,
+    product_id: 104,
+    order_date: '2025-01-18',
+    quantity: 1,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('692fbd513b37ae272489b064'),
+    order_id: 5,
+    customer_id: 5,
+    product_id: 105,
+    order_date: '2025-01-20',
+    quantity: 1,
+    status: 'Pending'
+  }
+]
+ShopDB> db.Orders.deleteMany({status:"Cancelled"})
+{ acknowledged: true, deletedCount: 1 }
+ShopDB> db.Orders.find()
+[
+  {
+    _id: ObjectId('692fbd513b37ae272489b060'),
+    order_id: 1,
+    customer_id: 1,
+    product_id: 101,
+    order_date: '2025-01-10',
+    quantity: 1,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('692fbd513b37ae272489b061'),
+    order_id: 2,
+    customer_id: 2,
+    product_id: 102,
+    order_date: '2025-01-12',
+    quantity: 1,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('692fbd513b37ae272489b063'),
+    order_id: 4,
+    customer_id: 4,
+    product_id: 104,
+    order_date: '2025-01-18',
+    quantity: 1,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('692fbd513b37ae272489b064'),
+    order_id: 5,
+    customer_id: 5,
+    product_id: 105,
+    order_date: '2025-01-20',
+    quantity: 1,
+    status: 'Pending'
+  }
+]
+ShopDB> 
+
+
+
+
+#
