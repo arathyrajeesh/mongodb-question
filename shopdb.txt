@@ -224,3 +224,32 @@ ShopDB>
 
 
 #Show only the names and cities of all customers.
+ShopDB> db.Customers.find({},{name:1,city:1})
+[
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b056'),
+    name: 'Aarav',
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b057'),
+    name: 'Diya',
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b058'),
+    name: 'Rohan',
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b059'),
+    name: 'Sneha',
+    city: 'Chennai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b05a'),
+    name: 'Karan',
+    city: 'Kolkata'
+  }
+]
+ShopDB> 
