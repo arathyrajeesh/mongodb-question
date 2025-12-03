@@ -253,3 +253,178 @@ ShopDB> db.Customers.find({},{name:1,city:1})
   }
 ]
 ShopDB> 
+
+
+
+#Display all products whose price is greater than 2000.
+ShopDB> db.Products.find({price:{$gt:2000}})
+[
+  {
+    _id: ObjectId('692fbd143b37ae272489b05b'),
+    product_id: 101,
+    product_name: 'Laptop',
+    category_id: 1,
+    price: 55000,
+    stock: 10
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05c'),
+    product_id: 102,
+    product_name: 'Smartphone',
+    category_id: 1,
+    price: 25000,
+    stock: 15
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05e'),
+    product_id: 104,
+    product_name: 'Watch',
+    category_id: 3,
+    price: 3000,
+    stock: 8
+  }
+]
+ShopDB> 
+
+
+
+#List all customers who belong to the city "Mumbai"
+ShopDB> db.Customers.find({city:"Mumbai"})
+[
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b056'),
+    customer_id: 1,
+    name: 'Aarav',
+    email: 'aarav@gmail.com',
+    phone: '9876543210',
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b058'),
+    customer_id: 3,
+    name: 'Rohan',
+    email: 'rohan@gmail.com',
+    phone: '9988776655',
+    city: 'Mumbai'
+  }
+]
+ShopDB> 
+
+
+
+# Display products whose stock is between 5 and 20
+ShopDB> db.Products.find({stock:{$gte:5,$lte:20}})
+[
+  {
+    _id: ObjectId('692fbd143b37ae272489b05b'),
+    product_id: 101,
+    product_name: 'Laptop',
+    category_id: 1,
+    price: 55000,
+    stock: 10
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05c'),
+    product_id: 102,
+    product_name: 'Smartphone',
+    category_id: 1,
+    price: 25000,
+    stock: 15
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05e'),
+    product_id: 104,
+    product_name: 'Watch',
+    category_id: 3,
+    price: 3000,
+    stock: 8
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05f'),
+    product_id: 105,
+    product_name: 'Headphones',
+    category_id: 3,
+    price: 1500,
+    stock: 5
+  }
+]
+ShopDB> 
+
+
+#List orders with status = "Delivered".
+ShopDB> db.Orders.find({ status: "Delivered" });
+... 
+[
+  {
+    _id: ObjectId('692fbd513b37ae272489b060'),
+    order_id: 1,
+    customer_id: 1,
+    product_id: 101,
+    order_date: '2025-01-10',
+    quantity: 1,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('692fbd513b37ae272489b063'),
+    order_id: 4,
+    customer_id: 4,
+    product_id: 104,
+    order_date: '2025-01-18',
+    quantity: 1,
+    status: 'Delivered'
+  }
+]
+ShopDB> 
+
+
+
+#Display products sorted by price in descending order
+ShopDB> db.Products.find().sort({price:-1})
+[
+  {
+    _id: ObjectId('692fbd143b37ae272489b05b'),
+    product_id: 101,
+    product_name: 'Laptop',
+    category_id: 1,
+    price: 55000,
+    stock: 10
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05c'),
+    product_id: 102,
+    product_name: 'Smartphone',
+    category_id: 1,
+    price: 25000,
+    stock: 15
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05e'),
+    product_id: 104,
+    product_name: 'Watch',
+    category_id: 3,
+    price: 3000,
+    stock: 8
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05d'),
+    product_id: 103,
+    product_name: 'Shoes',
+    category_id: 2,
+    price: 1800,
+    stock: 25
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05f'),
+    product_id: 105,
+    product_name: 'Headphones',
+    category_id: 3,
+    price: 1500,
+    stock: 5
+  }
+]
+ShopDB> 
+
+
+
+
+#Sort customers alphabetically by name.
