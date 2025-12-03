@@ -1,7 +1,7 @@
 use ShopDB
 
 
-db.Customers.insertMany([
+1.db.Customers.insertMany([
   {
     customer_id: 1,
     name: "Aarav",
@@ -41,7 +41,7 @@ db.Customers.insertMany([
 
 
 
-db.Products.insertMany([
+2.db.Products.insertMany([
   {
     product_id: 101,
     product_name: "Laptop",
@@ -81,7 +81,7 @@ db.Products.insertMany([
 
 
 
-db.Orders.insertMany([
+3.db.Orders.insertMany([
   {
     order_id: 1,
     customer_id: 1,
@@ -125,7 +125,7 @@ db.Orders.insertMany([
 ]);
 
 
-db.Category.insertMany([
+4.db.Category.insertMany([
   { category_id: 1, category_name: "Electronics" },
   { category_id: 2, category_name: "Footwear" },
   { category_id: 3, category_name: "Accessories" },
@@ -134,7 +134,7 @@ db.Category.insertMany([
 ]);
 
 
-db.Payments.insertMany([
+5.db.Payments.insertMany([
   {
     payment_id: 1,
     order_id: 1,
@@ -174,7 +174,7 @@ db.Payments.insertMany([
 
 
 
-#Display all customer details
+6.#Display all customer details
 ShopDB> db.Customers.find()
 [
   {
@@ -223,7 +223,7 @@ ShopDB>
 
 
 
-#Show only the names and cities of all customers.
+7.#Show only the names and cities of all customers.
 ShopDB> db.Customers.find({},{name:1,city:1})
 [
   {
@@ -256,7 +256,7 @@ ShopDB>
 
 
 
-#Display all products whose price is greater than 2000.
+8.#Display all products whose price is greater than 2000.
 ShopDB> db.Products.find({price:{$gt:2000}})
 [
   {
@@ -288,7 +288,7 @@ ShopDB>
 
 
 
-#List all customers who belong to the city "Mumbai"
+9.#List all customers who belong to the city "Mumbai"
 ShopDB> db.Customers.find({city:"Mumbai"})
 [
   {
@@ -312,7 +312,7 @@ ShopDB>
 
 
 
-# Display products whose stock is between 5 and 20
+10.# Display products whose stock is between 5 and 20
 ShopDB> db.Products.find({stock:{$gte:5,$lte:20}})
 [
   {
@@ -351,7 +351,7 @@ ShopDB> db.Products.find({stock:{$gte:5,$lte:20}})
 ShopDB> 
 
 
-#List orders with status = "Delivered".
+11.#List orders with status = "Delivered".
 ShopDB> db.Orders.find({ status: "Delivered" });
 ... 
 [
@@ -378,7 +378,7 @@ ShopDB>
 
 
 
-#Display products sorted by price in descending order
+12.#Display products sorted by price in descending order
 ShopDB> db.Products.find().sort({price:-1})
 [
   {
@@ -427,7 +427,7 @@ ShopDB>
 
 
 
-#Sort customers alphabetically by name.
+13.#Sort customers alphabetically by name.
 ShopDB> db.Customers.find().sort({name:1})
 [
   {
@@ -475,7 +475,7 @@ ShopDB>
 
 
 
-#Show top 3 most expensive products using a limit.
+14.#Show top 3 most expensive products using a limit.
 ShopDB> db.Products.find().sort({price:-1}).limit(3)
 [
   {
@@ -507,7 +507,7 @@ ShopDB>
 
 
 
-# Skip the first 2 customers and display the next customers.
+15.# Skip the first 2 customers and display the next customers.
 ShopDB> db.Customers.find().skip(2)
 [
   {
@@ -538,14 +538,14 @@ ShopDB> db.Customers.find().skip(2)
 ShopDB> 
 
 
-#Count the total number of products
+16.#Count the total number of products
 ShopDB> db.Customers.find().count()
 5
 ShopDB> 
 
 
 
-#Find the highest price among all products.
+17.#Find the highest price among all products.
 ShopDB> db.Products.find().sort({price:-1}).limit(1)
 [
   {
@@ -562,7 +562,7 @@ ShopDB>
 
 
 
-#Count the number of customers city-wise.
+18.#Count the number of customers city-wise.
 ShopDB> db.Customers.aggregate([{ $group: { _id: "$city",count: { $sum: 1 }}}])
 [
   { _id: 'Kolkata', count: 1 },
@@ -575,7 +575,7 @@ ShopDB>
 
 
 
-#Count orders grouped by status (Delivered, Pending, Cancelled).
+19.#Count orders grouped by status (Delivered, Pending, Cancelled).
 ShopDB> db.Orders.aggregate([{ $group: { _id: "$status",count: { $sum: 1 }}}])
 [
   { _id: 'Delivered', count: 2 },
@@ -586,7 +586,7 @@ ShopDB>
 
 
 
-#Calculate the total payment amount received from the Payments collection.
+20.#Calculate the total payment amount received from the Payments collection.
 ShopDB> db.Payments.aggregate([{ $group: { _id:null,totalPayment: { $sum: "$amount" }}}])
 [ { _id: null, totalPayment: 176200 } ]
 ShopDB> 
@@ -594,7 +594,7 @@ ShopDB>
 
 
 
-#Find the average stock of all products.
+21.#Find the average stock of all products.
 ShopDB> db.Products.aggregate([{ $group: { _id:null,avgstock: { $avg: "$stock" }}}])
 [ { _id: null, avgstock: 12.6 } ]
 ShopDB>
@@ -602,7 +602,7 @@ ShopDB>
 
 
 
-#Display total product stock grouped by category.
+22.#Display total product stock grouped by category.
 ShopDB> db.Products.aggregate([{ $group:{_id:"$category_id",totalstock:{$sum:"$stock"}}}])
 [
   { _id: 2, totalstock: 25 },
@@ -613,7 +613,7 @@ ShopDB>
 
 
 
-#Update the email of the customer whose name = "Aarav".
+23.#Update the email of the customer whose name = "Aarav".
 ShopDB> db.Customers.update({name:"Aarav"},{$set:{email:"aarav2@gmail.com"}})
 DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
 {
@@ -670,7 +670,7 @@ ShopDB>
 
 
 
-#Delete all cancelled orders from the Orders collection.
+24.#Delete all cancelled orders from the Orders collection.
 ShopDB> db.Orders.find()
 [
   {
@@ -765,4 +765,61 @@ ShopDB>
 
 
 
-#
+25.#Reduce the stock of a product after an order by decreasing 5 from its stock value.
+ShopDB> db.Products.updateOne(
+...   { product_id: 101 },       
+...   { $inc: { stock: -5 } }    
+... );
+... 
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+ShopDB> db.Products.find()
+[
+  {
+    _id: ObjectId('692fbd143b37ae272489b05b'),
+    product_id: 101,
+    product_name: 'Laptop',
+    category_id: 1,
+    price: 55000,
+    stock: 5
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05c'),
+    product_id: 102,
+    product_name: 'Smartphone',
+    category_id: 1,
+    price: 25000,
+    stock: 15
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05d'),
+    product_id: 103,
+    product_name: 'Shoes',
+    category_id: 2,
+    price: 1800,
+    stock: 25
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05e'),
+    product_id: 104,
+    product_name: 'Watch',
+    category_id: 3,
+    price: 3000,
+    stock: 8
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05f'),
+    product_id: 105,
+    product_name: 'Headphones',
+    category_id: 3,
+    price: 1500,
+    stock: 5
+  }
+]
+ShopDB> 
+
