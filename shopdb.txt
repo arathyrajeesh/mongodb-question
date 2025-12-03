@@ -561,7 +561,19 @@ ShopDB>
 
 
 
+
 #Count the number of customers city-wise.
+ShopDB> db.Customers.aggregate([{ $group: { _id: "$city",count: { $sum: 1 }}}])
+[
+  { _id: 'Kolkata', count: 1 },
+  { _id: 'Chennai', count: 1 },
+  { _id: 'Delhi', count: 1 },
+  { _id: 'Mumbai', count: 2 }
+]
+ShopDB> 
+
+
+
 
 #Count orders grouped by status (Delivered, Pending, Cancelled).
 ShopDB> db.Orders.aggregate([{ $group: { _id: "$status",count: { $sum: 1 }}}])
@@ -571,3 +583,88 @@ ShopDB> db.Orders.aggregate([{ $group: { _id: "$status",count: { $sum: 1 }}}])
   { _id: 'Cancelled', count: 1 }
 ]
 ShopDB> 
+
+
+
+#Calculate the total payment amount received from the Payments collection.
+ShopDB> db.Payments.aggregate([{ $group: { _id:null,totalPayment: { $sum: "$amount" }}}])
+[ { _id: null, totalPayment: 176200 } ]
+ShopDB> 
+
+
+
+
+#Find the average stock of all products.
+ShopDB> db.Products.aggregate([{ $group: { _id:null,avgstock: { $avg: "$stock" }}}])
+[ { _id: null, avgstock: 12.6 } ]
+ShopDB>
+
+
+
+
+#Display total product stock grouped by category.
+ShopDB> db.Products.aggregate([{ $group:{_id:"$category_id",totalstock:{$sum:"$stock"}}}])
+[
+  { _id: 2, totalstock: 25 },
+  { _id: 3, totalstock: 13 },
+  { _id: 1, totalstock: 25 }
+]
+ShopDB> 
+
+
+
+#Update the email of the customer whose name = "Aarav".
+ShopDB> db.Customers.update({name:"Aarav"},{$set:{email:"aarav2@gmail.com"}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+ShopDB> db.Customers.find()
+[
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b056'),
+    customer_id: 1,
+    name: 'Aarav',
+    email: 'aarav2@gmail.com',
+    phone: '9876543210',
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b057'),
+    customer_id: 2,
+    name: 'Diya',
+    email: 'diya@gmail.com',
+    phone: '9123456780',
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b058'),
+    customer_id: 3,
+    name: 'Rohan',
+    email: 'rohan@gmail.com',
+    phone: '9988776655',
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b059'),
+    customer_id: 4,
+    name: 'Sneha',
+    email: 'sneha@gmail.com',
+    phone: '9001122334',
+    city: 'Chennai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b05a'),
+    customer_id: 5,
+    name: 'Karan',
+    email: 'karan@gmail.com',
+    phone: '9090909090',
+    city: 'Kolkata'
+  }
+]
+ShopDB> 
+
