@@ -536,3 +536,25 @@ ShopDB> db.Customers.find().skip(2)
   }
 ]
 ShopDB> 
+
+
+#Count the total number of products
+ShopDB> db.Customers.find().count()
+5
+ShopDB> 
+
+
+
+#Find the highest price among all products.
+ShopDB> db.Products.find().sort({price:-1}).limit(1)
+[
+  {
+    _id: ObjectId('692fbd143b37ae272489b05b'),
+    product_id: 101,
+    product_name: 'Laptop',
+    category_id: 1,
+    price: 55000,
+    stock: 10
+  }
+]
+ShopDB> 
