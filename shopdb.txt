@@ -428,3 +428,51 @@ ShopDB>
 
 
 #Sort customers alphabetically by name.
+ShopDB> db.Customers.find().sort({name:1})
+[
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b056'),
+    customer_id: 1,
+    name: 'Aarav',
+    email: 'aarav@gmail.com',
+    phone: '9876543210',
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b057'),
+    customer_id: 2,
+    name: 'Diya',
+    email: 'diya@gmail.com',
+    phone: '9123456780',
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b05a'),
+    customer_id: 5,
+    name: 'Karan',
+    email: 'karan@gmail.com',
+    phone: '9090909090',
+    city: 'Kolkata'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b058'),
+    customer_id: 3,
+    name: 'Rohan',
+    email: 'rohan@gmail.com',
+    phone: '9988776655',
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b059'),
+    customer_id: 4,
+    name: 'Sneha',
+    email: 'sneha@gmail.com',
+    phone: '9001122334',
+    city: 'Chennai'
+  }
+]
+ShopDB> 
+
+
+
+#Show top 3 most expensive products using a limit.
