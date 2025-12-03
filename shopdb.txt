@@ -476,3 +476,63 @@ ShopDB>
 
 
 #Show top 3 most expensive products using a limit.
+ShopDB> db.Products.find().sort({price:-1}).limit(3)
+[
+  {
+    _id: ObjectId('692fbd143b37ae272489b05b'),
+    product_id: 101,
+    product_name: 'Laptop',
+    category_id: 1,
+    price: 55000,
+    stock: 10
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05c'),
+    product_id: 102,
+    product_name: 'Smartphone',
+    category_id: 1,
+    price: 25000,
+    stock: 15
+  },
+  {
+    _id: ObjectId('692fbd143b37ae272489b05e'),
+    product_id: 104,
+    product_name: 'Watch',
+    category_id: 3,
+    price: 3000,
+    stock: 8
+  }
+]
+ShopDB> 
+
+
+
+# Skip the first 2 customers and display the next customers.
+ShopDB> db.Customers.find().skip(2)
+[
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b058'),
+    customer_id: 3,
+    name: 'Rohan',
+    email: 'rohan@gmail.com',
+    phone: '9988776655',
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b059'),
+    customer_id: 4,
+    name: 'Sneha',
+    email: 'sneha@gmail.com',
+    phone: '9001122334',
+    city: 'Chennai'
+  },
+  {
+    _id: ObjectId('692fbc7a3b37ae272489b05a'),
+    customer_id: 5,
+    name: 'Karan',
+    email: 'karan@gmail.com',
+    phone: '9090909090',
+    city: 'Kolkata'
+  }
+]
+ShopDB> 
