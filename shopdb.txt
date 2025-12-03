@@ -1,0 +1,173 @@
+use ShopDB
+
+
+db.Customers.insertMany([
+  {
+    customer_id: 1,
+    name: "Aarav",
+    email: "aarav@gmail.com",
+    phone: "9876543210",
+    city: "Mumbai"
+  },
+  {
+    customer_id: 2,
+    name: "Diya",
+    email: "diya@gmail.com",
+    phone: "9123456780",
+    city: "Delhi"
+  },
+  {
+    customer_id: 3,
+    name: "Rohan",
+    email: "rohan@gmail.com",
+    phone: "9988776655",
+    city: "Mumbai"
+  },
+  {
+    customer_id: 4,
+    name: "Sneha",
+    email: "sneha@gmail.com",
+    phone: "9001122334",
+    city: "Chennai"
+  },
+  {
+    customer_id: 5,
+    name: "Karan",
+    email: "karan@gmail.com",
+    phone: "9090909090",
+    city: "Kolkata"
+  }
+]);
+
+
+
+db.Products.insertMany([
+  {
+    product_id: 101,
+    product_name: "Laptop",
+    category_id: 1,
+    price: 55000,
+    stock: 10
+  },
+  {
+    product_id: 102,
+    product_name: "Smartphone",
+    category_id: 1,
+    price: 25000,
+    stock: 15
+  },
+  {
+    product_id: 103,
+    product_name: "Shoes",
+    category_id: 2,
+    price: 1800,
+    stock: 25
+  },
+  {
+    product_id: 104,
+    product_name: "Watch",
+    category_id: 3,
+    price: 3000,
+    stock: 8
+  },
+  {
+    product_id: 105,
+    product_name: "Headphones",
+    category_id: 3,
+    price: 1500,
+    stock: 5
+  }
+]);
+
+
+
+db.Orders.insertMany([
+  {
+    order_id: 1,
+    customer_id: 1,
+    product_id: 101,
+    order_date: "2025-01-10",
+    quantity: 1,
+    status: "Delivered"
+  },
+  {
+    order_id: 2,
+    customer_id: 2,
+    product_id: 102,
+    order_date: "2025-01-12",
+    quantity: 1,
+    status: "Pending"
+  },
+  {
+    order_id: 3,
+    customer_id: 3,
+    product_id: 103,
+    order_date: "2025-01-15",
+    quantity: 2,
+    status: "Cancelled"
+  },
+  {
+    order_id: 4,
+    customer_id: 4,
+    product_id: 104,
+    order_date: "2025-01-18",
+    quantity: 1,
+    status: "Delivered"
+  },
+  {
+    order_id: 5,
+    customer_id: 5,
+    product_id: 105,
+    order_date: "2025-01-20",
+    quantity: 1,
+    status: "Pending"
+  }
+]);
+
+
+db.Category.insertMany([
+  { category_id: 1, category_name: "Electronics" },
+  { category_id: 2, category_name: "Footwear" },
+  { category_id: 3, category_name: "Accessories" },
+  { category_id: 4, category_name: "Clothing" },
+  { category_id: 5, category_name: "Home Appliances" }
+]);
+
+
+db.Payments.insertMany([
+  {
+    payment_id: 1,
+    order_id: 1,
+    mode: "UPI",
+    amount: 55000,
+    payment_date: "2025-01-10"
+  },
+  {
+    payment_id: 2,
+    order_id: 2,
+    mode: "Card",
+    amount: 25000,
+    payment_date: "2025-01-12"
+  },
+  {
+    payment_id: 3,
+    order_id: 3,
+    mode: "Cash",
+    amount: 3600,
+    payment_date: "2025-01-15"
+  },
+  {
+    payment_id: 4,
+    order_id: 4,
+    mode: "UPI",
+    amount: 3000,
+    payment_date: "2025-01-18"
+  },
+  {
+    payment_id: 5,
+    order_id: 5,
+    mode: "Card",
+    amount: 1500,
+    payment_date: "2025-01-20"
+  }
+]);
